@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require('lodash');
 const port = 3000
 
 const homeStartingContent =
@@ -47,6 +48,18 @@ app.post("/compose", (req, res)=> {
 
 });
 
+app.get("/posts/:postName", (req, res)=> {
+ const requestedTitle = _.lowerCase(req.params.postName);
+
+ posts.forEach(function(post) {
+   const storedTitle = _.lowerCase(post.title);
+
+   if (storedTitle === requestedTitle){
+     console.log("Match found!");
+   }
+ });
+
+});
 
 
 app.listen(port, () => {
