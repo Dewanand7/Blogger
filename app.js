@@ -19,8 +19,10 @@ app.use(express.static("public")); // tell express that our static files are hel
 
 // let posts = [];
 
+let posts = [];
+
 app.get("/", (req, res) => {
-  res.render("home", {JustStart: homeStartingContent });
+  res.render("home", {JustStart: homeStartingContent, posts:posts });
 });
 
 app.get("/about", (req, res) => {
@@ -40,6 +42,8 @@ app.post("/compose", (req, res)=> {
    title: req.body.postTitle,
    content: req.body.postBody
  };
+ posts.push(post);
+ res.redirect("/")
 
 });
 
