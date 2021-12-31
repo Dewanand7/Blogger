@@ -1,1 +1,1 @@
-# Blogger templet
+# Blogger templete
